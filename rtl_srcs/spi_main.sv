@@ -68,11 +68,11 @@ module spi_main #(parameter ADC_RESOLUTION = 12, CLK_DIVIDER = 25, QUIET_CYCLES 
             end
             else if (edge_counter > 0) begin
                 //the two conditionals below check for an edge transition
-                if (clk_counter == CLK_DIVIDER) begin
+                if (clk_counter == CLK_DIVIDER-1) begin
                     edge_counter <= edge_counter -1;
                     clk_counter <= 0;
 
-                    i_sclk = ~i_sclk;
+                    i_sclk <= ~i_sclk;
 
                     rising_edge_transition <= 1;
                 end
